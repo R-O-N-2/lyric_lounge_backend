@@ -1,4 +1,4 @@
-const Genre  = require('../models/genre')
+const { Genre }  = require('../models')
 
 const getAllGenres = async (req, res) => {
     try {
@@ -9,6 +9,18 @@ const getAllGenres = async (req, res) => {
     }
 }
 
-module.exports = {
-    getAllGenres
+const getGenreByName = async (req, res) => {
+    try {
+        let {name} = req.params
+        const genreName = await Genre.find({genre:name})
+        if (!genreName) throw Error('Genre not found')
+        res.send(genreName)
+    } catch(error) {
+        throw error
+    }
 }
+
+module.exports = {
+    getAllGenres,
+    getGenreByName
+};

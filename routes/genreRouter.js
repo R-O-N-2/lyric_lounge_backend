@@ -4,4 +4,4 @@ const controller = require('../controllers/genreController')
 
 router.get('/', controller.getAllGenres);
 
-module.exports = router
+module.exports = router;

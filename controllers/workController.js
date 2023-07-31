@@ -1,4 +1,4 @@
-const Work  = require('../models/work')
+const { Work }  = require('../models')
 
 const getAllWorks = async (req, res) => {
     try {
@@ -9,6 +9,18 @@ const getAllWorks = async (req, res) => {
     }
 }
 
-module.exports = {
-    getAllWorks
+const getWorkByTitle = async (req, res) => {
+    try {
+        let {title} = req.params
+        const workTitle = await Work.find({work:title})
+        if(!workTitle) throw Error ('Work not found')
+        res.send(workTitle)
+    } catch(error) {
+        throw error
+    }
 }
+
+module.exports = {
+    getAllWorks,
+    getWorkByTitle
+};
