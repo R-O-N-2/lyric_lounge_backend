@@ -1,5 +1,17 @@
 const { Work }  = require('../models')
 
+const createWork = async (req, res) => {
+    try {
+        const work = await new Work(req.body)
+        await work.save()
+        return res.status(201).json({
+            work,
+        })
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+}
+
 const getAllWorks = async (req, res) => {
     try {
         const works = await Work.find()
@@ -21,6 +33,7 @@ const getWorkByTitle = async (req, res) => {
 }
 
 module.exports = {
+    createWork,
     getAllWorks,
     getWorkByTitle
 };

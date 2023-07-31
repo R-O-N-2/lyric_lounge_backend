@@ -2,6 +2,8 @@
 // const Schema = mongoose.Schema
 const { Schema } = require('mongoose')
 
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
 const User = new Schema(
     {
         username: { type: String, required: true },

@@ -1,17 +1,33 @@
-const Genres = [
-    {
-        genreName: 'pop'
-    },
+const db = require('../db')
+const Genre = require('../models/genre')
 
-    {
-        genreName: 'hip-hop'
-    },
+db.on('error', console.error.bind(console, 'MongoDB connnection error:'))
 
-    {
-        genreName: 'rock'
-    },
-    
-    {
-        genreName: 'other'
-    }
-]
+const main = async () =>  {
+    const genres = [
+        {
+            genreName: 'pop'
+        },
+
+        {
+            genreName: 'hip-hop'
+        },
+
+        {
+            genreName: 'rock'
+        },
+
+        {
+            genreName: 'other'
+        }
+    ]
+
+    await Genre.insertMany(genres)
+    console.log("Created some genres!")
+}
+const run = async () => {
+    await main()
+    db.close()
+}
+
+run()
