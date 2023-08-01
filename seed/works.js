@@ -1,13 +1,14 @@
 const db = require('../db')
-const Work = require('../models/work')
+const { Work, Genre } = require('../models')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
+    const genres = await Genre.find()
     const works = [
         {
             title: 'ABC',
-            genre: 'other',
+            genre: genres[0]._id,
             content: 'ABC, 123..'
         }
     ]

@@ -11,10 +11,10 @@ const getAllGenres = async (req, res) => {
 
 const getGenreByName = async (req, res) => {
     try {
-        let {name} = req.params
-        const genreName = await Genre.find({genre:name})
-        if (!genreName) throw Error('Genre not found')
-        res.send(genreName)
+        let {genreName} = req.params
+        const genre = await Genre.find({genreName:genreName})
+        if (!genre) throw Error('Genre not found')
+        res.send(genre)
     } catch(error) {
         throw error
     }

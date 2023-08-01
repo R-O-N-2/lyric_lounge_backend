@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const { model } = require('mongoose')
-const userSchema = require('./user')
-const genreSchema = require('./genre')
-const workSchema = require('./work')
+const userSchema = require('./userModel')
+const genreSchema = require('./genreModel')
+const workSchema = require('./workModel')
 
 const User = model('User', userSchema)
 const Genre = model('Genre', genreSchema)
