@@ -5,6 +5,9 @@ const controller = require('../controllers/workController')
 //Get Works
 router.get('/', controller.getAllWorks);
 router.get('/:title', controller.getWorkByTitle)
+router.get('/:user', controller.getWorkByUserId)
+
+
 
 
 //Create

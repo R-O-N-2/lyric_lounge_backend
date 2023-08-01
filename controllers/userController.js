@@ -53,7 +53,7 @@ const deleteUser = async (req, res) => {
         if (deleted) {
             return res.status(200).send("User has been deleted.")
         }
-        throw new Error("Review not found")
+        throw new Error("User not found")
     } catch (error) {
         return res.status(500).send(error.message)
     }

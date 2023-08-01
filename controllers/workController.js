@@ -1,4 +1,4 @@
-const { Work }  = require('../models')
+const { Work, User }  = require('../models')
 
 const createWork = async (req, res) => {
     try {
@@ -58,6 +58,17 @@ const deleteWork = async (req, res) => {
     }
 }
 
+const getWorkByUserId = async (req, res) => {
+    try { 
+        const { user } = req.params.user
+        const works = await User.find(user)
+        if (!works) throw Error('No works found')
+        res.status(200).json(user)
+    } catch (e) {
+        res.status(400).send(e.message)
+    }
+}
+
 
 
 module.exports = {
@@ -66,4 +77,5 @@ module.exports = {
     getWorkByTitle,
     updateWork,
     deleteWork,
+    getWorkByUserId
 };
