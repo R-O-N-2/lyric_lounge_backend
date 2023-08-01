@@ -5,6 +5,12 @@ const { Schema } = require('mongoose')
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const Work = new Schema(
   {
+
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+
     title: {
       type: String,
       required: true,
