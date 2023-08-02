@@ -1,8 +1,5 @@
-// const mongoose = require('mongoose')
-// const Schema = mongoose.Schema
 const { Schema } = require('mongoose')
 
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const Work = new Schema(
   {
 
@@ -27,12 +24,6 @@ const Work = new Schema(
       type: String,
       }
     ],
-    // likes: [
-    //   {
-    //   type: '',
-    //   ref: ''
-    //   }
-    // ],
   }
 )
 

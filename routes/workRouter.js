@@ -6,6 +6,7 @@ const controller = require('../controllers/workController')
 router.get('/', controller.getAllWorks);
 router.get('/title/:title', controller.getWorkByTitle)
 router.get('/username/:username', controller.getWorksByUsername)
+router.get('/genreName/:genreName', controller.getWorksByGenre)
 
 
 //Create
