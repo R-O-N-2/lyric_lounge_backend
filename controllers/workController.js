@@ -58,12 +58,17 @@ const deleteWork = async (req, res) => {
     }
 }
 
-const getWorkByUserId = async (req, res) => {
-    try { 
-        const { user } = req.params.user
-        const works = await User.find(user)
+const getWorksByUsername = async (req, res) => {
+    try {
+        let {username} = req.params
+        console.log(username)
+        const user = await User.findOne({username : username})
+        const works = await Work.find({user: user._id})
+        console.log(user._id)
+        console.log(user)
+        console.log(works)
         if (!works) throw Error('No works found')
-        res.status(200).json(user)
+        res.status(200).json(works)
     } catch (e) {
         res.status(400).send(e.message)
     }
@@ -77,5 +82,5 @@ module.exports = {
     getWorkByTitle,
     updateWork,
     deleteWork,
-    getWorkByUserId
+    getWorksByUsername
 };

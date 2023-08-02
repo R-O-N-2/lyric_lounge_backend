@@ -10,11 +10,9 @@ router.get('/', (req, res) => {
 
 //Users 
 router.use('/users', userRouter)
-router.use('/user/:id', userRouter)
 
 //Works
 router.use('/works', workRouter)
-router.use('/work/:title', workRouter)
 
 //Genres
 router.use('/genres', genreRouter)
