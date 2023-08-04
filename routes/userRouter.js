@@ -4,10 +4,10 @@ const controller = require('../controllers/userController')
 
 //Get Users
 router.get('/', controller.getAllUsers);
-router.get('/:username', controller.getUserByName)
+router.get('/username/:username', controller.getUserByName)
 
 //Create User
-router.post('/', controller.createUser);
+router.post('/signup', controller.createUser);
 
 //Update User
 router.put('/:id', controller.updateUser)

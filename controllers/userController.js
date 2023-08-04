@@ -1,16 +1,34 @@
 const { User } = require('../models')
 
+// const createUser = async (req, res) => {
+//     try {
+//         const user = await new User(req.body)
+//         await user.save()
+//         return res.status(201).json({user,
+//         })
+//     } catch (error) {
+//         return res.status(500).json({error:error.message})
+//     }
+// }
+
 const createUser = async (req, res) => {
     try {
-        const user = await new User(req.body)
-        await user.save()
-        return res.status(201).json({user,
+        const { username, location, contact, password } = req.body
+        
+        const newUser = new User({
+            username, 
+            location, 
+            contact,
+            password
         })
-    } catch (error) {
-        return res.status(500).json({error:error.message})
+        
+        const savedUser = await newUser.save()
+        res.status(201).json(savedUser)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send('User creation unsuccessful')
     }
 }
-
 
 const getAllUsers = async (req, res) => {
     try {

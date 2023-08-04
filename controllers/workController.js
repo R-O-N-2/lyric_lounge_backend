@@ -1,16 +1,32 @@
 const { Work, User, Genre }  = require('../models')
 
+// const createWork = async (req, res) => {
+//     try {
+//         const work = new Work(req.body)
+//         await work.save()
+//         return res.status(201).json({
+//             work,
+//         })
+//     } catch (error) {
+//         return res.status(500).json({ error: error.message })
+//     }
+// }
+
 const createWork = async (req, res) => {
-    try {
-        const work = await new Work(req.body)
-        await work.save()
-        return res.status(201).json({
-            work,
-        })
-    } catch (error) {
-        return res.status(500).json({ error: error.message })
+      const newWork = await Work.create({
+        user: req.body.username,
+        title: req.body.title,
+        genre: req.body.genre,
+        content: req.body.content
+     })
+     res.json(newWork)
     }
-}
+//       const savedWork = await work.save();
+//       return res.status(201).json(savedWork);
+//     } catch (error) {
+//       return res.status(500).json({ error: error.message });
+//     }
+//   };
 
 const getAllWorks = async (req, res) => {
     try {
